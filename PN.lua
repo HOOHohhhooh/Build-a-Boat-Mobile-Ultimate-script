@@ -2,6 +2,34 @@ local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 
+do
+	local ToggleUi = game.CoreGui:FindFirstChild("Toggle")
+	if ToggleUi then
+	    ToggleUi:Destroy()
+    end
+end
+
+local Toggle = Instance.new("ScreenGui")
+local ImageButton = Instance.new("ImageButton")
+local UICorner = Instance.new("UICorner")
+
+Toggle.Name = "Toggle"
+Toggle.Parent = game.CoreGui
+Toggle.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ImageButton.Parent = Toggle
+ImageButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ImageButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+ImageButton.BorderSizePixel = 0
+ImageButton.Position = UDim2.new(0.0764375255, 0, 0.132185429, 0)
+ImageButton.Size = UDim2.new(0, 55, 0, 55)
+ImageButton.Image = "rbxassetid://18780143793"
+ImageButton.MouseButton1Click:Connect(function()
+game.CoreGui:FindFirstChild("ScreenGui").Enabled = not game.CoreGui:FindFirstChild("ScreenGui").Enabled
+end)
+
+UICorner.Parent = ImageButton
+
 local Window = Fluent:CreateWindow({
     Title = "Build a Boat Mobile Ultimate Script",
     SubTitle = "By Phoomphat",
